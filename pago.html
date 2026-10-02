@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AutoTotal — Pago</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+tailwind.config = { darkMode: "class", theme: { extend: { colors: { primary: "#dc2626", "primary-dark": "#991b1b", accent: "#171717", "background-light": "#f6f7f8", "background-dark": "#101922" }, fontFamily: { display: ["Inter", "sans-serif"] }, borderRadius: { DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px" } } } }
+</script>
+<link rel="stylesheet" href="assets/css/styles.css"/>
+</head>
+<body class="font-display bg-background-light">
+<div id="appHeader"></div>
+
+<main class="px-4 sm:px-6 lg:px-8 pt-6 pb-12">
+  <nav class="flex items-center gap-2 text-sm text-slate-500 mb-4">
+    <a href="index.html" class="hover:text-primary">Inicio</a>
+    <span class="material-symbols-outlined !text-base">chevron_right</span>
+    <a href="carrito.html" class="hover:text-primary">Carrito</a>
+    <span class="material-symbols-outlined !text-base">chevron_right</span>
+    <span class="text-slate-900 font-bold">Pago</span>
+  </nav>
+
+  <h1 class="text-3xl font-black mb-1">Finalizar compra</h1>
+  <p class="text-slate-500 text-sm mb-6">Completa los datos de envío y pago</p>
+
+  <div class="flex items-center justify-center mb-8 max-w-3xl">
+    <div class="flex items-center gap-3"><div class="size-10 rounded-full bg-primary text-white flex items-center justify-center font-black"><span class="material-symbols-outlined">check</span></div><span class="text-sm font-bold hidden sm:inline">Carrito</span></div>
+    <div class="h-0.5 w-12 sm:w-24 bg-primary mx-2"></div>
+    <div class="flex items-center gap-3"><div class="size-10 rounded-full bg-primary text-white flex items-center justify-center font-black">2</div><span class="text-sm font-bold hidden sm:inline">Pago</span></div>
+    <div class="h-0.5 w-12 sm:w-24 bg-slate-200 mx-2"></div>
+    <div class="flex items-center gap-3"><div class="size-10 rounded-full bg-slate-200 text-slate-500 flex items-center justify-center font-black">3</div><span class="text-sm font-bold text-slate-500 hidden sm:inline">Confirmación</span></div>
+  </div>
+
+  <form id="paymentForm" class="grid lg:grid-cols-[1fr_360px] gap-6">
+    <div class="space-y-6">
+      <!-- Dirección de envío -->
+      <div class="bg-white rounded-xl p-6 border border-slate-200">
+        <div class="flex items-center gap-2 mb-5">
+          <span class="material-symbols-outlined text-primary">location_on</span>
+          <h3 class="text-lg font-black">Dirección de envío</h3>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="sm:col-span-2">
+            <label class="block text-xs font-bold text-slate-700 mb-1">Calle y número *</label>
+            <input name="address" required class="form-input w-full rounded-lg border-slate-200 focus:ring-primary focus:border-primary" placeholder="Av. Las Condes 4520" value="Av. Las Condes 4520, Of. 12"/>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Departamento</label>
+            <input name="apto" class="form-input w-full rounded-lg border-slate-200 focus:ring-primary focus:border-primary" placeholder="Of. 12" value="Of. 12"/>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Comuna *</label>
+            <input name="commune" required class="form-input w-full rounded-lg border-slate-200 focus:ring-primary focus:border-primary" placeholder="Las Condes" value="Las Condes"/>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Región *</label>
+            <select name="region" required class="form-select w-full rounded-lg border-slate-200 focus:ring-primary focus:border-primary">
+              <option>Región Metropolitana</option><option>Valparaíso</option><option>Biobío</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Código postal</label>
+            <input name="zip" class="form-input w-full rounded-lg border-slate-200 focus:ring-primary focus:border-primary" placeholder="7550000" value="7550000"/>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Nombre destinatario *</label>
+            <input name="name" required class="form-input w-full rounded-lg border-slate-200 focus:ring-primary focus:border-primary" placeholder="Juan Pérez" value="Juan Pérez"/>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Teléfono de contacto *</label>
+            <input name="phone" required type="tel" class="form-input w-full rounded-lg border-slate-200 focus:ring-primary focus:border-primary" placeholder="+56 9 1234 5678" value="+56 9 6234 5678"/>
+          </div>
+          <div class="sm:col-span-2">
+            <label class="block text-xs font-bold text-slate-700 mb-1">Indicaciones especiales</label>
+            <textarea name="notes" rows="2" class="form-textarea w-full rounded-lg border-slate-200 focus:ring-primary focus:border-primary" placeholder="Ej: Dejar con conserje..."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tipo de envío -->
+      <div class="bg-white rounded-xl p-6 border border-slate-200">
+        <div class="flex items-center gap-2 mb-5">
+          <span class="material-symbols-outlined text-primary">local_shipping</span>
+          <h3 class="text-lg font-black">Tipo de envío</h3>
+        </div>
+        <div class="space-y-3" id="shippingOptions">
+          <label class="option-card flex items-start gap-3 p-4 rounded-xl cursor-pointer">
+            <input type="radio" name="shipping" value="retiro" class="mt-1 accent-primary"/>
+            <span class="material-symbols-outlined text-slate-700">storefront</span>
+            <div class="flex-1">
+              <p class="font-bold">Retiro en tienda</p>
+              <p class="text-xs text-slate-500 mt-1">Retira gratis en Av. Principal 1234. Horario lun-sáb 9:00-19:00.</p>
+              <p class="text-sm font-black text-green-600 mt-1">Gratis</p>
+            </div>
+            <p class="text-xs text-slate-500">Listo en 2 hrs</p>
+          </label>
+          <label class="option-card selected flex items-start gap-3 p-4 rounded-xl cursor-pointer">
+            <input type="radio" name="shipping" value="estandar" class="mt-1 accent-primary" checked/>
+            <span class="material-symbols-outlined text-slate-700">local_shipping</span>
+            <div class="flex-1">
+              <p class="font-bold">Envío estándar</p>
+              <p class="text-xs text-slate-500 mt-1">Despacho a domicilio en 3-5 días hábiles.</p>
+              <p class="text-sm font-black mt-1">$3.990</p>
+            </div>
+            <p class="text-xs text-slate-500">3-5 días</p>
+          </label>
+          <label class="option-card flex items-start gap-3 p-4 rounded-xl cursor-pointer">
+            <input type="radio" name="shipping" value="express" class="mt-1 accent-primary"/>
+            <span class="material-symbols-outlined text-slate-700">rocket_launch</span>
+            <div class="flex-1">
+              <p class="font-bold">Envío express</p>
+              <p class="text-xs text-slate-500 mt-1">Despacho prioritario 24-48 hrs en RM.</p>
+              <p class="text-sm font-black mt-1">$7.990</p>
+            </div>
+            <p class="text-xs text-slate-500">24-48 hrs</p>
+          </label>
+        </div>
+      </div>
+
+      <!-- Método de pago -->
+      <div class="bg-white rounded-xl p-6 border border-slate-200">
+        <div class="flex items-center gap-2 mb-5">
+          <span class="material-symbols-outlined text-primary">credit_card</span>
+          <h3 class="text-lg font-black">Medio de pago</h3>
+        </div>
+        <div class="space-y-3" id="paymentOptions">
+          <label class="option-card selected flex items-start gap-3 p-4 rounded-xl cursor-pointer">
+            <input type="radio" name="payment" value="tarjeta" class="mt-1 accent-primary" checked/>
+            <span class="material-symbols-outlined text-blue-600">credit_card</span>
+            <div class="flex-1">
+              <p class="font-bold">Tarjeta de crédito/débito</p>
+              <p class="text-xs text-slate-500 mt-1">Visa, Mastercard, American Express</p>
+              <div class="grid sm:grid-cols-2 gap-3 mt-3">
+                <input class="form-input rounded-lg border-slate-200 focus:ring-primary focus:border-primary" placeholder="Número de tarjeta" value="4532 1488 0343 6467"/>
+                <input class="form-input rounded-lg border-slate-200 focus:ring-primary focus:border-primary" placeholder="Nombre del titular" value="JUAN PÉREZ"/>
+                <input class="form-input rounded-lg border-slate-200 focus:ring-primary focus:border-primary" placeholder="Vencimiento MM/AA" value="12/28"/>
+                <input class="form-input rounded-lg border-slate-200 focus:ring-primary focus:border-primary" placeholder="CVV" value="123"/>
+              </div>
+              <p class="text-xs text-slate-400 mt-2 flex items-center gap-1"><span class="material-symbols-outlined !text-base">lock</span>Pago cifrado SSL 256-bit</p>
+            </div>
+          </label>
+          <label class="option-card flex items-start gap-3 p-4 rounded-xl cursor-pointer">
+            <input type="radio" name="payment" value="webpay" class="mt-1 accent-primary"/>
+            <span class="material-symbols-outlined text-red-600">account_balance</span>
+            <div class="flex-1">
+              <p class="font-bold">Webpay</p>
+              <p class="text-xs text-slate-500 mt-1">Redirección a Webpay Plus de Transbank</p>
+            </div>
+          </label>
+          <label class="option-card flex items-start gap-3 p-4 rounded-xl cursor-pointer">
+            <input type="radio" name="payment" value="transferencia" class="mt-1 accent-primary"/>
+            <span class="material-symbols-outlined text-green-600">savings</span>
+            <div class="flex-1">
+              <p class="font-bold">Transferencia bancaria</p>
+              <p class="text-xs text-slate-500 mt-1">Recibirás los datos al confirmar el pedido</p>
+            </div>
+          </label>
+          <label class="option-card flex items-start gap-3 p-4 rounded-xl cursor-pointer">
+            <input type="radio" name="payment" value="efectivo" class="mt-1 accent-primary"/>
+            <span class="material-symbols-outlined text-orange-600">payments</span>
+            <div class="flex-1">
+              <p class="font-bold">Efectivo en tienda</p>
+              <p class="text-xs text-slate-500 mt-1">Paga al momento de retirar tu pedido</p>
+            </div>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <aside class="bg-white rounded-xl p-6 border border-slate-200 h-fit lg:sticky lg-top-24">
+      <h3 class="text-lg font-black mb-5">Resumen</h3>
+      <div id="summaryItems" class="space-y-3 mb-4 max-h-48 overflow-auto"></div>
+      <div class="border-t border-slate-200 pt-4 space-y-2 text-sm">
+        <div class="flex justify-between"><span class="text-slate-600">Subtotal</span><span class="font-bold" id="paySubtotal">$0</span></div>
+        <div class="flex justify-between"><span class="text-slate-600">Envío</span><span class="font-bold" id="payShipping">$0</span></div>
+        <div class="flex justify-between text-green-600"><span>Descuento</span><span class="font-bold" id="payDiscount">-$0</span></div>
+        <div class="border-t border-slate-200 pt-3 flex justify-between items-baseline">
+          <span class="font-bold">Total</span>
+          <span class="text-3xl font-black" id="payTotal">$0</span>
+        </div>
+      </div>
+      <button type="submit" class="w-full mt-5 flex items-center justify-center gap-2 rounded-lg h-12 bg-primary text-white text-base font-bold hover:bg-primary-dark transition-colors">
+        <span class="material-symbols-outlined">lock</span>Pagar y confirmar
+      </button>
+      <p class="text-xs text-slate-500 text-center mt-3">Al pagar aceptas nuestros <a href="terminos.html" class="text-primary hover:underline">términos y condiciones</a>.</p>
+    </aside>
+  </form>
+</main>
+
+<div id="appFooter"></div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+renderHeader();
+renderFooter();
+
+function calcShipping(subtotal) {
+  const opt = document.querySelector('input[name="shipping"]:checked');
+  const v = opt ? opt.value : "estandar";
+  if (v === "retiro") return 0;
+  if (v === "express") return 7990;
+  return subtotal >= 80000 ? 0 : 3990;
+}
+
+function renderSummary() {
+  const cart = getCart();
+  const subtotal = cartSubtotal();
+  const shipping = calcShipping(subtotal);
+  const total = subtotal + shipping;
+  const itemsEl = document.getElementById("summaryItems");
+  itemsEl.innerHTML = cart.map(i => {
+    const p = PRODUCTS.find(x => x.id === i.productId);
+    if (!p) return "";
+    return `<div class="flex items-center gap-3 text-sm">
+      <img src="${p.image}" class="size-12 rounded-lg object-cover"/>
+      <div class="flex-1 min-w-0">
+        <p class="font-bold line-clamp-1">${p.name}</p>
+        <p class="text-xs text-slate-500">Cant: ${i.qty}</p>
+      </div>
+      <span class="font-bold">${clp(p.price * i.qty)}</span>
+    </div>`;
+  }).join("");
+  document.getElementById("paySubtotal").textContent = clp(subtotal);
+  document.getElementById("payShipping").textContent = shipping === 0 ? "Gratis" : clp(shipping);
+  document.getElementById("payDiscount").textContent = "-$0";
+  document.getElementById("payTotal").textContent = clp(total);
+}
+
+setupCardSelection("shippingOptions", "option-card");
+setupCardSelection("paymentOptions", "option-card");
+document.getElementById("shippingOptions").addEventListener("change", renderSummary);
+
+document.getElementById("paymentForm").addEventListener("submit", e => {
+  e.preventDefault();
+  if (!getCart().length) { alert("Tu carrito está vacío"); return; }
+  const orderId = "AT-2026-" + String(Math.floor(Math.random() * 9000) + 1000);
+  const data = Object.fromEntries(new FormData(e.target).entries());
+  localStorage.setItem("autototal_last_order", JSON.stringify({ id: orderId, date: new Date().toISOString().slice(0, 10), ...data }));
+  location.href = "confirmacion.html?order=" + orderId;
+});
+
+renderSummary();
+</script>
+</body>
+</html>

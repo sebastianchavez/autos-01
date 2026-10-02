@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AutoTotal — Compra confirmada</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+tailwind.config = { darkMode: "class", theme: { extend: { colors: { primary: "#dc2626", "primary-dark": "#991b1b", accent: "#171717", "background-light": "#f6f7f8", "background-dark": "#101922" }, fontFamily: { display: ["Inter", "sans-serif"] }, borderRadius: { DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px" } } } }
+</script>
+<link rel="stylesheet" href="assets/css/styles.css"/>
+</head>
+<body class="font-display bg-background-light">
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 no-print">
+  <div class="flex items-center justify-between px-4 sm:px-6 lg:px-8 py-3">
+    <a href="index.html" class="flex items-center gap-2 text-slate-900">
+      <div class="size-9 bg-primary rounded-lg flex items-center justify-center text-white"><span class="material-symbols-outlined">directions_car</span></div>
+      <h2 class="text-slate-900 text-xl font-black tracking-tight">AutoTotal</h2>
+    </a>
+    <a href="carrito.html" class="relative flex items-center justify-center rounded-lg h-10 bg-slate-100 text-slate-700 hover:bg-slate-200 gap-2 text-sm font-bold px-3">
+      <span class="material-symbols-outlined !text-2xl">shopping_cart</span>
+    </a>
+  </div>
+</header>
+
+<main class="max-w-[960px] mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <div class="text-center mb-8 no-print">
+    <div class="inline-flex items-center justify-center size-24 rounded-full bg-green-100 mb-6">
+      <span class="material-symbols-outlined text-green-600 fill-1 text-6xl">check_circle</span>
+    </div>
+    <h1 class="text-4xl font-black mb-2">¡Compra confirmada!</h1>
+    <p class="text-slate-500">Hemos recibido tu pedido. Te enviaremos un correo con los detalles del envío.</p>
+  </div>
+
+  <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden print-area" id="receipt">
+    <div class="bg-accent text-white p-6 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <div class="size-10 bg-primary rounded-lg flex items-center justify-center"><span class="material-symbols-outlined">receipt_long</span></div>
+        <div>
+          <p class="text-xs text-slate-300 uppercase">Comprobante de compra</p>
+          <h2 class="text-xl font-black">AutoTotal</h2>
+        </div>
+      </div>
+      <div class="text-right">
+        <p class="text-xs text-slate-300 uppercase">Pedido</p>
+        <p class="text-xl font-black" id="orderId">AT-2026-0000</p>
+      </div>
+    </div>
+
+    <div class="p-6 grid sm:grid-cols-3 gap-6 border-b border-slate-200">
+      <div><p class="text-xs font-black uppercase text-slate-500 mb-1">Fecha</p><p class="font-bold" id="orderDate">—</p></div>
+      <div><p class="text-xs font-black uppercase text-slate-500 mb-1">Cliente</p><p class="font-bold" id="customerName">—</p><p class="text-sm text-slate-500" id="customerPhone">—</p></div>
+      <div><p class="text-xs font-black uppercase text-slate-500 mb-1">Método de pago</p><p class="font-bold capitalize" id="paymentMethod">—</p><p class="text-sm text-slate-500">Pago confirmado</p></div>
+    </div>
+
+    <div class="p-6 border-b border-slate-200">
+      <p class="text-xs font-black uppercase text-slate-500 mb-1">Dirección de envío</p>
+      <p class="font-bold" id="shippingAddress">—</p>
+    </div>
+
+    <div class="p-6 border-b border-slate-200">
+      <p class="text-xs font-black uppercase text-slate-500 mb-3">Productos</p>
+      <div id="orderItems" class="space-y-3"></div>
+    </div>
+
+    <div class="p-6 bg-slate-50">
+      <div class="max-w-sm ml-auto space-y-2 text-sm">
+        <div class="flex justify-between"><span class="text-slate-600">Subtotal</span><span class="font-bold" id="subtotalFinal">$0</span></div>
+        <div class="flex justify-between"><span class="text-slate-600">Envío</span><span class="font-bold" id="shippingFinal">$0</span></div>
+        <div class="flex justify-between border-t border-slate-300 pt-2 mt-2"><span class="text-base font-black">Total</span><span class="text-2xl font-black text-primary" id="totalFinal">$0</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-8 bg-white rounded-2xl border border-slate-200 p-6 no-print">
+    <h3 class="text-lg font-black mb-5">Estado de tu pedido</h3>
+    <div class="grid grid-cols-4 gap-2">
+      <div class="text-center"><div class="size-12 mx-auto rounded-full bg-primary text-white flex items-center justify-center font-black"><span class="material-symbols-outlined">check</span></div><p class="text-xs font-bold mt-2">Recibido</p><p class="text-xs text-slate-500">Hoy</p></div>
+      <div class="text-center"><div class="size-12 mx-auto rounded-full bg-slate-200 text-slate-500 flex items-center justify-center"><span class="material-symbols-outlined">inventory_2</span></div><p class="text-xs font-bold text-slate-500 mt-2">Preparando</p><p class="text-xs text-slate-400">Mañana</p></div>
+      <div class="text-center"><div class="size-12 mx-auto rounded-full bg-slate-200 text-slate-500 flex items-center justify-center"><span class="material-symbols-outlined">local_shipping</span></div><p class="text-xs font-bold text-slate-500 mt-2">En camino</p><p class="text-xs text-slate-400">2-5 días</p></div>
+      <div class="text-center"><div class="size-12 mx-auto rounded-full bg-slate-200 text-slate-500 flex items-center justify-center"><span class="material-symbols-outlined">home</span></div><p class="text-xs font-bold text-slate-500 mt-2">Entregado</p><p class="text-xs text-slate-400">Pronto</p></div>
+    </div>
+  </div>
+
+  <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center no-print">
+    <button id="printBtn" class="flex items-center justify-center gap-2 rounded-lg h-12 px-6 bg-accent text-white text-base font-bold hover:bg-black transition-colors">
+      <span class="material-symbols-outlined">print</span>Imprimir comprobante
+    </button>
+    <a href="perfil.html" class="flex items-center justify-center gap-2 rounded-lg h-12 px-6 bg-primary text-white text-base font-bold hover:bg-primary-dark transition-colors">
+      <span class="material-symbols-outlined">package</span>Ver historial de pedidos
+    </a>
+  </div>
+
+  <div class="mt-6 text-center no-print">
+    <a href="productos.html" class="text-sm text-slate-500 hover:text-primary">← Seguir comprando</a>
+  </div>
+</main>
+
+<footer class="bg-accent text-slate-300 mt-8 no-print">
+  <div class="px-4 sm:px-6 lg:px-8 py-8 text-center">
+    <p class="text-xs text-slate-500">© 2026 AutoTotal. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+const params = new URLSearchParams(location.search);
+const orderId = params.get("order") || "AT-2026-0247";
+document.getElementById("orderId").textContent = orderId;
+
+const order = JSON.parse(localStorage.getItem("autototal_last_order") || "{}");
+document.getElementById("orderDate").textContent = new Date().toLocaleDateString("es-CL", { year: "numeric", month: "long", day: "numeric" });
+document.getElementById("customerName").textContent = order.name || CURRENT_USER.fullName;
+document.getElementById("customerPhone").textContent = order.phone || CURRENT_USER.phone;
+const payMap = { tarjeta: "Tarjeta de crédito", webpay: "Webpay", transferencia: "Transferencia bancaria", efectivo: "Efectivo en tienda" };
+document.getElementById("paymentMethod").textContent = payMap[order.payment] || "Tarjeta de crédito";
+document.getElementById("shippingAddress").textContent = `${order.address || "Av. Las Condes 4520, Of. 12"}, ${order.commune || "Las Condes"}, ${order.region || "Región Metropolitana"}`;
+
+const cart = getCart();
+const subtotal = cartSubtotal();
+const shippingCosts = { retiro: 0, estandar: 3990, express: 7990 };
+const finalShipping = order.shipping === "retiro" ? 0 : (subtotal >= 80000 ? 0 : (shippingCosts[order.shipping ?? "estandar"] || 3990));
+const total = subtotal + finalShipping;
+
+document.getElementById("orderItems").innerHTML = cart.map(i => {
+  const p = PRODUCTS.find(x => x.id === i.productId);
+  if (!p) return "";
+  return `<div class="flex items-center gap-3">
+    <img src="${p.image}" class="size-16 rounded-lg object-cover"/>
+    <div class="flex-1">
+      <p class="font-bold">${p.name}</p>
+      <p class="text-xs text-slate-500">Cant: ${i.qty} × ${clp(p.price)}</p>
+    </div>
+    <span class="font-black">${clp(p.price * i.qty)}</span>
+  </div>`;
+}).join("");
+
+document.getElementById("subtotalFinal").textContent = clp(subtotal);
+document.getElementById("shippingFinal").textContent = finalShipping === 0 ? "Gratis" : clp(finalShipping);
+document.getElementById("totalFinal").textContent = clp(total);
+
+if (cart.length === 0) {
+  document.getElementById("orderItems").innerHTML = `
+    <div class="flex items-center gap-3">
+      <img src="https://images.unsplash.com/photo-1632823469850-1f7e28e0a6f4?w=200&q=80" class="size-16 rounded-lg object-cover"/>
+      <div class="flex-1"><p class="font-bold">Aceite Motor Sintético 5W-30 (4L)</p><p class="text-xs text-slate-500">Cant: 1 × ${clp(28990)}</p></div>
+      <span class="font-black">${clp(28990)}</span>
+    </div>`;
+  document.getElementById("subtotalFinal").textContent = clp(28990);
+  document.getElementById("totalFinal").textContent = clp(28990);
+  document.getElementById("shippingFinal").textContent = "Gratis";
+}
+
+clearCart();
+document.getElementById("printBtn").addEventListener("click", () => window.print());
+</script>
+</body>
+</html>

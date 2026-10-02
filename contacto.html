@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AutoTotal — Contacto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+tailwind.config = { darkMode: "class", theme: { extend: { colors: { primary: "#dc2626", "primary-dark": "#991b1b", accent: "#171717", "background-light": "#f6f7f8", "background-dark": "#101922" }, fontFamily: { display: ["Inter", "sans-serif"] }, borderRadius: { DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px" } } } }
+</script>
+<link rel="stylesheet" href="assets/css/styles.css"/>
+</head>
+<body class="font-display bg-background-light">
+<div id="appHeader" data-active="contacto"></div>
+
+<main class="px-4 sm:px-6 lg:px-8 pt-6 pb-12">
+  <nav class="flex items-center gap-2 text-sm text-slate-500 mb-4">
+    <a href="index.html" class="hover:text-primary">Inicio</a>
+    <span class="material-symbols-outlined !text-base">chevron_right</span>
+    <span class="text-slate-900 font-bold">Contacto</span>
+  </nav>
+
+  <div class="bg-accent rounded-2xl p-8 sm:p-10 text-white relative overflow-hidden mb-6">
+    <div class="absolute -right-12 -top-12 size-64 bg-primary rounded-full opacity-20 blur-3xl"></div>
+    <h1 class="text-3xl sm:text-4xl font-black mb-2">Estamos para ayudarte</h1>
+    <p class="text-slate-300 max-w-xl">Escríbenos, llámanos o visítanos. Te responderemos a la brevedad.</p>
+  </div>
+
+  <div class="grid lg:grid-cols-2 gap-6">
+    <div class="bg-white rounded-xl border border-slate-200 p-6 sm:p-8">
+      <h2 class="text-2xl font-black mb-2">Envíanos un mensaje</h2>
+      <p class="text-slate-500 text-sm mb-6">Completa el formulario y te responderemos en menos de 24 horas.</p>
+
+      <form id="contactForm" class="space-y-4">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div><label class="block text-xs font-bold text-slate-700 mb-1">Nombre completo *</label><input required class="form-input w-full rounded-lg border-slate-200 focus:ring-primary focus:border-primary" placeholder="Juan Pérez"/></div>
+          <div><label class="block text-xs font-bold text-slate-700 mb-1">Email *</label><input type="email" required class="form-input w-full rounded-lg border-slate-200 focus:ring-primary focus:border-primary" placeholder="tu@email.cl"/></div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div><label class="block text-xs font-bold text-slate-700 mb-1">Teléfono</label><input type="tel" class="form-input w-full rounded-lg border-slate-200 focus:ring-primary focus:border-primary" placeholder="+56 9 1234 5678"/></div>
+          <div><label class="block text-xs font-bold text-slate-700 mb-1">Motivo</label>
+            <select class="form-select w-full rounded-lg border-slate-200 focus:ring-primary focus:border-primary">
+              <option>Consulta general</option><option>Soporte de un pedido</option><option>Información de servicios</option><option>Ventas corporativas</option><option>Reclamos y sugerencias</option>
+            </select>
+          </div>
+        </div>
+        <div><label class="block text-xs font-bold text-slate-700 mb-1">Asunto *</label><input required class="form-input w-full rounded-lg border-slate-200 focus:ring-primary focus:border-primary" placeholder="¿Sobre qué quieres consultar?"/></div>
+        <div><label class="block text-xs font-bold text-slate-700 mb-1">Mensaje *</label><textarea required rows="6" class="form-textarea w-full rounded-lg border-slate-200 focus:ring-primary focus:border-primary" placeholder="Cuéntanos en detalle..."></textarea></div>
+        <label class="flex items-start gap-2 cursor-pointer">
+          <input type="checkbox" required class="mt-1 rounded text-primary focus:ring-primary"/>
+          <span class="text-sm text-slate-700">Acepto la <a href="privacidad.html" class="text-primary hover:underline">política de privacidad</a> y el tratamiento de mis datos.</span>
+        </label>
+        <button type="submit" class="w-full flex items-center justify-center gap-2 rounded-lg h-12 bg-primary text-white text-base font-bold hover:bg-primary-dark">
+          <span class="material-symbols-outlined">send</span>Enviar mensaje
+        </button>
+      </form>
+
+      <div id="contactSuccess" class="hidden text-center py-8">
+        <div class="inline-flex items-center justify-center size-16 rounded-full bg-green-100 mb-4">
+          <span class="material-symbols-outlined text-green-600 fill-1 text-4xl">check_circle</span>
+        </div>
+        <h3 class="text-xl font-black mb-2">¡Mensaje enviado!</h3>
+        <p class="text-slate-500 text-sm">Te responderemos a tu email en menos de 24 horas.</p>
+      </div>
+    </div>
+
+    <div class="space-y-4">
+      <div class="bg-white rounded-xl border border-slate-200 p-5 flex gap-4">
+        <div class="size-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-2xl">phone</span></div>
+        <div><h3 class="font-black mb-1">Teléfonos</h3><p class="text-sm">+56 2 2345 6789 · Ventas</p><p class="text-sm">+56 9 6234 5678 · WhatsApp</p><p class="text-sm">+56 2 2345 6790 · Servicios</p></div>
+      </div>
+      <div class="bg-white rounded-xl border border-slate-200 p-5 flex gap-4">
+        <div class="size-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-2xl">mail</span></div>
+        <div><h3 class="font-black mb-1">Emails</h3><p class="text-sm">contacto@autototal.cl</p><p class="text-sm">ventas@autototal.cl</p><p class="text-sm">postventa@autototal.cl</p></div>
+      </div>
+      <div class="bg-white rounded-xl border border-slate-200 p-5 flex gap-4">
+        <div class="size-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-2xl">location_on</span></div>
+        <div><h3 class="font-black mb-1">Ubicación</h3><p class="text-sm">Av. Principal 1234, Santiago</p><p class="text-sm text-slate-500">A pasos del Metro Estación Central</p><a href="https://www.google.com/maps" target="_blank" class="inline-flex items-center gap-1 text-xs font-bold text-primary hover:underline mt-2">Ver en Google Maps <span class="material-symbols-outlined !text-sm">open_in_new</span></a></div>
+      </div>
+
+      <div class="bg-accent rounded-xl p-5 text-white">
+        <h3 class="text-lg font-black mb-4 flex items-center gap-2"><span class="material-symbols-outlined text-primary">schedule</span>Horario de atención</h3>
+        <div class="space-y-2 text-sm">
+          <div class="flex justify-between"><span>Lunes a viernes</span><span class="font-bold">09:00 - 19:00</span></div>
+          <div class="flex justify-between"><span>Sábados</span><span class="font-bold">09:00 - 14:00</span></div>
+          <div class="flex justify-between text-slate-400"><span>Domingo</span><span>Cerrado</span></div>
+        </div>
+        <div class="border-t border-slate-700 mt-4 pt-4 flex items-center gap-2">
+          <span class="size-2 rounded-full bg-green-400 animate-pulse"></span>
+          <p class="text-xs text-slate-300">Abierto ahora — cierra a las 19:00</p>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-xl border border-slate-200 overflow-hidden">
+        <div class="aspect-video bg-cover bg-center relative" style='background-image: linear-gradient(rgba(220,38,38,0.1), rgba(0,0,0,0.05)), url("https://images.unsplash.com/photo-1524661135-423995f22d0b?w=1200&q=80");'>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="bg-white rounded-full size-16 shadow-2xl flex items-center justify-center animate-bounce">
+              <span class="material-symbols-outlined text-primary text-4xl fill-1">location_on</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="appFooter"></div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+renderHeader("contacto");
+renderFooter();
+document.getElementById("contactForm").addEventListener("submit", e => {
+  e.preventDefault();
+  document.getElementById("contactForm").classList.add("hidden");
+  document.getElementById("contactSuccess").classList.remove("hidden");
+});
+</script>
+</body>
+</html>

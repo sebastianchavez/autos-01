@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AutoTotal — Crear cuenta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+tailwind.config = { darkMode: "class", theme: { extend: { colors: { primary: "#dc2626", "primary-dark": "#991b1b", accent: "#171717", "background-light": "#f6f7f8", "background-dark": "#101922" }, fontFamily: { display: ["Inter", "sans-serif"] }, borderRadius: { DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px" } } } }
+</script>
+<link rel="stylesheet" href="assets/css/styles.css"/>
+</head>
+<body class="font-display bg-background-light">
+<div class="relative min-h-screen w-full grid lg:grid-cols-2">
+  <div class="hidden lg:flex bg-accent text-white p-12 flex-col justify-between relative overflow-hidden">
+    <div class="absolute -right-32 -top-32 size-96 bg-primary rounded-full opacity-20 blur-3xl"></div>
+    <div class="absolute -left-32 -bottom-32 size-96 bg-primary rounded-full opacity-10 blur-3xl"></div>
+    <div class="relative z-10">
+      <a href="index.html" class="flex items-center gap-3 mb-12">
+        <div class="size-12 bg-primary rounded-lg flex items-center justify-center"><span class="material-symbols-outlined text-2xl">directions_car</span></div>
+        <h2 class="text-3xl font-black tracking-tight">AutoTotal</h2>
+      </a>
+      <span class="inline-block px-3 py-1 bg-primary/20 text-primary text-xs font-bold rounded-full mb-6">REGISTRO</span>
+      <h1 class="text-5xl font-black leading-tight mb-6">Únete a la familia AutoTotal</h1>
+      <p class="text-slate-300 text-lg mb-10 max-w-md">Crea tu cuenta y disfruta de beneficios exclusivos, seguimiento de pedidos, historial y ofertas personalizadas.</p>
+      <div class="space-y-4">
+        <div class="flex items-center gap-3"><span class="size-8 rounded-full bg-primary/20 text-primary flex items-center justify-center"><span class="material-symbols-outlined !text-base">check</span></span><span class="text-sm">Envío gratis sobre $80.000</span></div>
+        <div class="flex items-center gap-3"><span class="size-8 rounded-full bg-primary/20 text-primary flex items-center justify-center"><span class="material-symbols-outlined !text-base">check</span></span><span class="text-sm">Historial de pedidos y descargas</span></div>
+        <div class="flex items-center gap-3"><span class="size-8 rounded-full bg-primary/20 text-primary flex items-center justify-center"><span class="material-symbols-outlined !text-base">check</span></span><span class="text-sm">Ofertas exclusivas para miembros</span></div>
+        <div class="flex items-center gap-3"><span class="size-8 rounded-full bg-primary/20 text-primary flex items-center justify-center"><span class="material-symbols-outlined !text-base">check</span></span><span class="text-sm">Reseñas y favoritos</span></div>
+      </div>
+    </div>
+    <div class="relative z-10">
+      <p class="text-slate-400 text-sm">¿Ya tienes cuenta? <a href="login.html" class="text-primary font-bold hover:underline">Inicia sesión aquí</a></p>
+    </div>
+  </div>
+
+  <div class="flex items-center justify-center p-6 sm:p-10">
+    <div class="w-full max-w-md">
+      <div class="lg:hidden mb-8">
+        <a href="index.html" class="flex items-center gap-2 mb-4">
+          <div class="size-10 bg-primary rounded-lg flex items-center justify-center text-white"><span class="material-symbols-outlined">directions_car</span></div>
+          <h2 class="text-xl font-black">AutoTotal</h2>
+        </a>
+      </div>
+      <h2 class="text-3xl font-black mb-2">Crear cuenta</h2>
+      <p class="text-slate-500 text-sm mb-6">Completa tus datos para empezar</p>
+
+      <div class="grid grid-cols-2 gap-3 mb-6">
+        <button type="button" class="flex items-center justify-center gap-2 rounded-lg h-11 border border-slate-200 text-sm font-bold text-slate-700 hover:bg-slate-50">
+          <svg viewBox="0 0 24 24" class="size-5"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+          Google
+        </button>
+        <button type="button" class="flex items-center justify-center gap-2 rounded-lg h-11 border border-slate-200 text-sm font-bold text-slate-700 hover:bg-slate-50">
+          <svg viewBox="0 0 24 24" class="size-5 fill-slate-900"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+          Apple
+        </button>
+      </div>
+
+      <div class="relative my-6">
+        <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-slate-200"></div></div>
+        <div class="relative flex justify-center text-xs"><span class="px-3 bg-background-light text-slate-500 font-bold uppercase">o regístrate con email</span></div>
+      </div>
+
+      <form id="registerForm" class="space-y-4">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div><label class="block text-xs font-bold mb-1">Nombre *</label><input required class="form-input w-full rounded-lg border-slate-200 focus:ring-primary focus:border-primary" placeholder="Juan"/></div>
+          <div><label class="block text-xs font-bold mb-1">Apellido *</label><input required class="form-input w-full rounded-lg border-slate-200 focus:ring-primary focus:border-primary" placeholder="Pérez"/></div>
+        </div>
+        <div><label class="block text-xs font-bold mb-1">RUT *</label><input required class="form-input w-full rounded-lg border-slate-200 focus:ring-primary focus:border-primary" placeholder="12.345.678-9"/></div>
+        <div><label class="block text-xs font-bold mb-1">Email *</label><input type="email" required class="form-input w-full rounded-lg border-slate-200 focus:ring-primary focus:border-primary" placeholder="tu@email.cl"/></div>
+        <div><label class="block text-xs font-bold mb-1">Teléfono *</label><input type="tel" required class="form-input w-full rounded-lg border-slate-200 focus:ring-primary focus:border-primary" placeholder="+56 9 1234 5678"/></div>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div><label class="block text-xs font-bold mb-1">Región</label>
+            <select class="form-select w-full rounded-lg border-slate-200 focus:ring-primary focus:border-primary">
+              <option>Región Metropolitana</option><option>Valparaíso</option><option>Biobío</option><option>Otra</option>
+            </select>
+          </div>
+          <div><label class="block text-xs font-bold mb-1">Fecha de nacimiento</label><input type="date" class="form-input w-full rounded-lg border-slate-200 focus:ring-primary focus:border-primary"/></div>
+        </div>
+        <div>
+          <label class="block text-xs font-bold mb-1">Contraseña *</label>
+          <div class="relative">
+            <input required type="password" id="password" class="form-input w-full rounded-lg border-slate-200 focus:ring-primary focus:border-primary pr-10" placeholder="Mínimo 8 caracteres" minlength="8"/>
+            <button type="button" id="togglePass" class="absolute right-2 top-1/2 -translate-y-1/2 size-8 text-slate-400 hover:text-slate-700 flex items-center justify-center">
+              <span class="material-symbols-outlined">visibility</span>
+            </button>
+          </div>
+          <div class="mt-2 h-1 bg-slate-200 rounded-full overflow-hidden"><div id="strengthBar" class="strength-fill h-full w-0 bg-red-500"></div></div>
+          <p class="text-xs text-slate-500 mt-1" id="strengthText">Muy débil</p>
+        </div>
+        <div>
+          <label class="block text-xs font-bold mb-1">Confirmar contraseña *</label>
+          <input required type="password" id="confirmPass" class="form-input w-full rounded-lg border-slate-200 focus:ring-primary focus:border-primary" placeholder="Repite tu contraseña"/>
+          <p class="text-xs text-red-600 mt-1 hidden" id="matchError">Las contraseñas no coinciden</p>
+        </div>
+
+        <div class="space-y-2 pt-2">
+          <label class="flex items-start gap-2 cursor-pointer">
+            <input type="checkbox" required class="mt-1 rounded text-primary focus:ring-primary"/>
+            <span class="text-sm">Acepto los <a href="terminos.html" class="text-primary hover:underline font-bold">términos y condiciones</a> y la <a href="privacidad.html" class="text-primary hover:underline font-bold">política de privacidad</a> *</span>
+          </label>
+          <label class="flex items-start gap-2 cursor-pointer">
+            <input type="checkbox" class="mt-1 rounded text-primary focus:ring-primary"/>
+            <span class="text-sm">Quiero recibir ofertas y novedades por email</span>
+          </label>
+        </div>
+
+        <button type="submit" class="w-full flex items-center justify-center gap-2 rounded-lg h-12 bg-primary text-white text-base font-bold hover:bg-primary-dark">
+          <span class="material-symbols-outlined">person_add</span>Crear mi cuenta
+        </button>
+
+        <p class="text-center text-sm text-slate-500">
+          ¿Ya tienes cuenta? <a href="login.html" class="text-primary font-bold hover:underline">Inicia sesión</a>
+        </p>
+      </form>
+
+      <div id="registerSuccess" class="hidden bg-white rounded-xl border border-slate-200 p-8 text-center">
+        <div class="inline-flex items-center justify-center size-16 rounded-full bg-green-100 mb-4">
+          <span class="material-symbols-outlined text-green-600 fill-1 text-4xl">check_circle</span>
+        </div>
+        <h3 class="text-2xl font-black mb-2">¡Bienvenido a AutoTotal!</h3>
+        <p class="text-slate-500 mb-6">Tu cuenta fue creada exitosamente. Te enviamos un email de confirmación.</p>
+        <a href="index.html" class="inline-flex items-center justify-center rounded-lg h-12 px-8 bg-primary text-white text-base font-bold hover:bg-primary-dark">Ir al inicio</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+const passInput = document.getElementById("password");
+const bar = document.getElementById("strengthBar");
+const text = document.getElementById("strengthText");
+passInput.addEventListener("input", () => {
+  const val = passInput.value;
+  let score = 0;
+  if (val.length >= 8) score++;
+  if (/[a-z]/.test(val) && /[A-Z]/.test(val)) score++;
+  if (/\d/.test(val)) score++;
+  if (/[^a-zA-Z0-9]/.test(val)) score++;
+  const map = [
+    { w: "0%",     c: "bg-transparent", t: "Muy débil" },
+    { w: "25%",    c: "bg-red-500",     t: "Débil" },
+    { w: "50%",    c: "bg-yellow-500",  t: "Aceptable" },
+    { w: "75%",    c: "bg-blue-500",    t: "Buena" },
+    { w: "100%",   c: "bg-green-500",   t: "Excelente" }
+  ];
+  const m = map[score];
+  bar.style.width = m.w; bar.className = "strength-fill h-full " + m.c; text.textContent = m.t;
+});
+document.getElementById("confirmPass").addEventListener("input", () => {
+  const e = document.getElementById("matchError");
+  if (passInput.value && document.getElementById("confirmPass").value !== passInput.value) e.classList.remove("hidden");
+  else e.classList.add("hidden");
+});
+document.getElementById("togglePass").addEventListener("click", () => {
+  const isText = passInput.type === "text";
+  passInput.type = isText ? "password" : "text";
+  document.querySelector("#togglePass span").textContent = isText ? "visibility" : "visibility_off";
+});
+document.getElementById("registerForm").addEventListener("submit", e => {
+  e.preventDefault();
+  if (passInput.value !== document.getElementById("confirmPass").value) return;
+  document.getElementById("registerForm").classList.add("hidden");
+  document.getElementById("registerSuccess").classList.remove("hidden");
+});
+</script>
+</body>
+</html>
