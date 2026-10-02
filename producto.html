@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AutoTotal — Producto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+tailwind.config = { darkMode: "class", theme: { extend: { colors: { primary: "#dc2626", "primary-dark": "#991b1b", accent: "#171717", "background-light": "#f6f7f8", "background-dark": "#101922" }, fontFamily: { display: ["Inter", "sans-serif"] }, borderRadius: { DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px" } } } }
+</script>
+<link rel="stylesheet" href="assets/css/styles.css"/>
+</head>
+<body class="font-display bg-background-light">
+<div id="appHeader" data-active="productos"></div>
+
+<main class="px-4 sm:px-6 lg:px-8 pt-6 pb-12">
+  <nav class="flex items-center gap-2 text-sm text-slate-500 mb-4">
+    <a href="index.html" class="hover:text-primary">Inicio</a>
+    <span class="material-symbols-outlined !text-base">chevron_right</span>
+    <a href="productos.html" class="hover:text-primary">Catálogo</a>
+    <span class="material-symbols-outlined !text-base">chevron_right</span>
+    <span id="bcCategory" class="text-slate-900 font-bold capitalize">Repuestos</span>
+  </nav>
+
+  <section class="bg-white rounded-2xl p-6 border border-slate-200 mb-6">
+    <div class="grid lg:grid-cols-2 gap-8" id="productDetail"></div>
+  </section>
+
+  <section class="bg-white rounded-2xl border border-slate-200 overflow-hidden mb-10">
+    <div class="border-b border-slate-200 flex">
+      <button data-tab="desc" class="tab-btn px-6 py-4 text-sm font-bold border-b-2 border-primary text-primary">Descripción</button>
+      <button data-tab="specs" class="tab-btn px-6 py-4 text-sm font-bold border-b-2 border-transparent text-slate-500 hover:text-slate-900">Especificaciones</button>
+      <button data-tab="reviews" class="tab-btn px-6 py-4 text-sm font-bold border-b-2 border-transparent text-slate-500 hover:text-slate-900">Reseñas (<span id="reviewCount">0</span>)</button>
+    </div>
+    <div class="p-6">
+      <div data-pane="desc" class="tab-pane"><p class="text-slate-700 leading-relaxed" id="descriptionText"></p></div>
+      <div data-pane="specs" class="tab-pane hidden">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="flex justify-between py-2 border-b border-slate-100"><span class="text-slate-500 text-sm">Marca</span><span class="font-bold text-sm" id="specBrand"></span></div>
+          <div class="flex justify-between py-2 border-b border-slate-100"><span class="text-slate-500 text-sm">Categoría</span><span class="font-bold text-sm capitalize" id="specCategory"></span></div>
+          <div class="flex justify-between py-2 border-b border-slate-100"><span class="text-slate-500 text-sm">Stock disponible</span><span class="font-bold text-sm text-green-600" id="specStock"></span></div>
+          <div class="flex justify-between py-2 border-b border-slate-100"><span class="text-slate-500 text-sm">SKU</span><span class="font-bold text-sm" id="specSku"></span></div>
+          <div class="flex justify-between py-2 border-b border-slate-100"><span class="text-slate-500 text-sm">Garantía</span><span class="font-bold text-sm">6 meses</span></div>
+          <div class="flex justify-between py-2 border-b border-slate-100"><span class="text-slate-500 text-sm">Origen</span><span class="font-bold text-sm">Importado</span></div>
+        </div>
+      </div>
+      <div data-pane="reviews" class="tab-pane hidden">
+        <div class="flex items-center justify-between mb-6">
+          <div>
+            <h3 class="text-2xl font-black"><span id="ratingSummary">0</span> / 5</h3>
+            <div id="ratingStarsBig" class="flex text-yellow-400 text-2xl mb-1"></div>
+            <p class="text-sm text-slate-500">Basado en <span id="ratingCount">0</span> reseñas</p>
+          </div>
+          <a id="writeReviewLink" href="resena.html?id=1" class="flex items-center gap-2 rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold hover:bg-primary-dark">
+            <span class="material-symbols-outlined !text-base">edit</span>Escribir reseña
+          </a>
+        </div>
+        <div id="reviewsList" class="space-y-4"></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="text-2xl font-black mb-5">Productos relacionados</h2>
+    <div id="related" class="grid grid-cols-2 lg:grid-cols-4 gap-4"></div>
+  </section>
+</main>
+
+<div id="appFooter"></div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+renderHeader("productos");
+renderFooter();
+
+const params = new URLSearchParams(location.search);
+const id = parseInt(params.get("id") || "1");
+const product = PRODUCTS.find(p => p.id === id) || PRODUCTS[0];
+const productReviews = REVIEWS.filter(r => r.productId === product.id);
+const discount = product.oldPrice ? Math.round((1 - product.price / product.oldPrice) * 100) : 0;
+
+document.title = `AutoTotal — ${product.name}`;
+document.getElementById("bcCategory").textContent = product.category;
+
+document.getElementById("productDetail").innerHTML = `
+  <div class="space-y-4">
+    <div class="aspect-square rounded-xl overflow-hidden bg-slate-100 relative">
+      <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover" />
+      ${discount ? `<span class="absolute top-4 left-4 bg-primary text-white text-sm font-black px-3 py-1.5 rounded-md">-${discount}% OFF</span>` : ""}
+    </div>
+    <div class="grid grid-cols-4 gap-2">
+      <button class="aspect-square rounded-lg overflow-hidden border-2 border-primary"><img src="${product.image}" class="w-full h-full object-cover"/></button>
+      <button class="aspect-square rounded-lg overflow-hidden border-2 border-transparent hover:border-slate-300"><div class="w-full h-full bg-slate-200 flex items-center justify-center text-slate-400"><span class="material-symbols-outlined">image</span></div></button>
+      <button class="aspect-square rounded-lg overflow-hidden border-2 border-transparent hover:border-slate-300"><div class="w-full h-full bg-slate-200 flex items-center justify-center text-slate-400"><span class="material-symbols-outlined">image</span></div></button>
+      <button class="aspect-square rounded-lg overflow-hidden border-2 border-transparent hover:border-slate-300"><div class="w-full h-full bg-slate-200 flex items-center justify-center text-slate-400"><span class="material-symbols-outlined">videocam</span></div></button>
+    </div>
+  </div>
+  <div class="flex flex-col">
+    <span class="inline-block w-fit px-2 py-1 bg-primary/10 text-primary text-xs font-black rounded uppercase mb-2">${product.category}</span>
+    <span class="inline-block w-fit text-xs text-slate-500 font-bold mb-2">Marca: <span class="text-slate-900">${product.brand}</span></span>
+    <h1 class="text-2xl sm:text-3xl font-black leading-tight mb-3">${product.name}</h1>
+    <div class="flex items-center gap-3 mb-4">
+      <div class="flex text-yellow-400">${starsHTML(product.rating)}</div>
+      <span class="text-sm font-bold text-slate-700">${product.rating}</span>
+      <span class="text-sm text-slate-500">(${productReviews.length} reseñas)</span>
+    </div>
+    <div class="flex items-baseline gap-3 mb-5">
+      <span class="text-4xl font-black">${clp(product.price)}</span>
+      ${product.oldPrice ? `<span class="text-lg text-slate-400 line-through">${clp(product.oldPrice)}</span>` : ""}
+    </div>
+    <div class="flex items-center gap-2 mb-5 text-sm">
+      <span class="material-symbols-outlined text-green-600 fill-1">verified</span>
+      <span class="text-green-600 font-bold">${product.stock > 10 ? "Stock disponible" : "¡Últimas " + product.stock + " unidades!"}</span>
+    </div>
+    <p class="text-slate-600 leading-relaxed mb-6">${product.description}</p>
+    <div class="bg-slate-50 rounded-xl p-4 mb-6">
+      <p class="text-xs font-black uppercase text-slate-500 mb-3">Cantidad</p>
+      <div class="flex items-center gap-4">
+        <div class="flex items-center bg-white border border-slate-200 rounded-lg">
+          <button id="qtyMinus" class="size-11 text-slate-700 hover:bg-slate-100 rounded-l-lg"><span class="material-symbols-outlined">remove</span></button>
+          <input id="qtyInput" type="number" value="1" min="1" max="${product.stock}" class="w-16 text-center border-none focus:ring-0 bg-transparent font-black text-lg"/>
+          <button id="qtyPlus" class="size-11 text-slate-700 hover:bg-slate-100 rounded-r-lg"><span class="material-symbols-outlined">add</span></button>
+        </div>
+        <button id="addToCartBtn" class="flex-1 flex items-center justify-center gap-2 rounded-lg h-11 bg-accent hover:bg-black text-white text-sm font-bold transition-colors">
+          <span class="material-symbols-outlined !text-xl">add_shopping_cart</span>Agregar al carrito
+        </button>
+      </div>
+    </div>
+    <button id="buyNowBtn" class="w-full flex items-center justify-center gap-2 rounded-lg h-12 bg-primary hover:bg-primary-dark text-white text-base font-bold mb-4">
+      <span class="material-symbols-outlined">bolt</span>Comprar ahora
+    </button>
+    <div class="grid grid-cols-2 gap-3 text-xs text-slate-500">
+      <div class="flex items-center gap-2"><span class="material-symbols-outlined !text-base text-primary">local_shipping</span>Despacho a todo Chile</div>
+      <div class="flex items-center gap-2"><span class="material-symbols-outlined !text-base text-primary">verified_user</span>Garantía 6 meses</div>
+      <div class="flex items-center gap-2"><span class="material-symbols-outlined !text-base text-primary">sync</span>30 días devolución</div>
+      <div class="flex items-center gap-2"><span class="material-symbols-outlined !text-base text-primary">credit_card</span>Pago seguro</div>
+    </div>
+  </div>
+`;
+
+document.getElementById("descriptionText").textContent = product.description;
+document.getElementById("specBrand").textContent = product.brand;
+document.getElementById("specCategory").textContent = product.category;
+document.getElementById("specStock").textContent = product.stock + " unidades";
+document.getElementById("specSku").textContent = "AT-" + String(product.id).padStart(4, "0");
+document.getElementById("reviewCount").textContent = productReviews.length;
+document.getElementById("writeReviewLink").href = `resena.html?id=${product.id}`;
+document.getElementById("ratingSummary").textContent = product.rating;
+document.getElementById("ratingStarsBig").innerHTML = starsHTML(product.rating, "text-2xl");
+document.getElementById("ratingCount").textContent = productReviews.length;
+
+const reviewsList = document.getElementById("reviewsList");
+if (productReviews.length === 0) {
+  reviewsList.innerHTML = `<div class="text-center py-8 text-slate-500"><span class="material-symbols-outlined text-4xl">rate_review</span><p class="mt-2 text-sm">Aún no hay reseñas para este producto.</p></div>`;
+} else {
+  reviewsList.innerHTML = productReviews.map(r => `
+    <div class="border border-slate-200 rounded-xl p-4">
+      <div class="flex items-start justify-between mb-2">
+        <div class="flex items-center gap-3">
+          <div class="size-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-black">${r.avatar}</div>
+          <div>
+            <p class="font-bold text-sm">${r.user}</p>
+            <div class="flex text-yellow-400">${starsHTML(r.rating)}</div>
+          </div>
+        </div>
+        <span class="text-xs text-slate-400">${new Date(r.date).toLocaleDateString("es-CL", { year: "numeric", month: "long", day: "numeric" })}</span>
+      </div>
+      <p class="text-slate-700 text-sm leading-relaxed">${r.comment}</p>
+    </div>
+  `).join("");
+}
+
+document.querySelectorAll(".tab-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".tab-btn").forEach(b => { b.classList.remove("border-primary", "text-primary"); b.classList.add("border-transparent", "text-slate-500"); });
+    btn.classList.add("border-primary", "text-primary");
+    document.querySelectorAll(".tab-pane").forEach(p => p.classList.add("hidden"));
+    document.querySelector(`[data-pane="${btn.dataset.tab}"]`).classList.remove("hidden");
+  });
+});
+
+document.getElementById("qtyMinus").addEventListener("click", () => {
+  const i = document.getElementById("qtyInput"); if (i.value > 1) i.value = parseInt(i.value) - 1;
+});
+document.getElementById("qtyPlus").addEventListener("click", () => {
+  const i = document.getElementById("qtyInput"); if (parseInt(i.value) < product.stock) i.value = parseInt(i.value) + 1;
+});
+document.getElementById("addToCartBtn").addEventListener("click", () => addToCart(product.id, parseInt(document.getElementById("qtyInput").value)));
+document.getElementById("buyNowBtn").addEventListener("click", () => {
+  addToCart(product.id, parseInt(document.getElementById("qtyInput").value));
+  location.href = "carrito.html";
+});
+
+const related = PRODUCTS.filter(p => p.category === product.category && p.id !== product.id).slice(0, 4);
+document.getElementById("related").innerHTML = related.map(productCardHTML).join("");
+</script>
+</body>
+</html>

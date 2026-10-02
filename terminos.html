@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AutoTotal — Términos y condiciones</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+tailwind.config = { darkMode: "class", theme: { extend: { colors: { primary: "#dc2626", "primary-dark": "#991b1b", accent: "#171717", "background-light": "#f6f7f8", "background-dark": "#101922" }, fontFamily: { display: ["Inter", "sans-serif"] }, borderRadius: { DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px" } } } }
+</script>
+<link rel="stylesheet" href="assets/css/styles.css"/>
+</head>
+<body class="font-display bg-background-light">
+<div id="appHeader"></div>
+
+<main class="px-4 sm:px-6 lg:px-8 pt-6 pb-12">
+  <nav class="flex items-center gap-2 text-sm text-slate-500 mb-4">
+    <a href="index.html" class="hover:text-primary">Inicio</a>
+    <span class="material-symbols-outlined !text-base">chevron_right</span>
+    <span class="text-slate-900 font-bold">Términos y condiciones</span>
+  </nav>
+
+  <div class="grid lg:grid-cols-[260px_1fr] gap-6">
+    <aside class="bg-white rounded-xl border border-slate-200 p-4 h-fit lg:sticky lg-top-24">
+      <p class="text-xs font-black uppercase text-slate-500 mb-3 px-2">Contenido</p>
+      <nav class="text-sm">
+        <a href="#acepta"        class="block px-3 py-2 rounded-lg hover:bg-slate-100 text-slate-700">1. Aceptación</a>
+        <a href="#cuenta"        class="block px-3 py-2 rounded-lg hover:bg-slate-100 text-slate-700">2. Cuenta de usuario</a>
+        <a href="#compras"       class="block px-3 py-2 rounded-lg hover:bg-slate-100 text-slate-700">3. Compras y pagos</a>
+        <a href="#envios"        class="block px-3 py-2 rounded-lg hover:bg-slate-100 text-slate-700">4. Envíos y entregas</a>
+        <a href="#devoluciones"  class="block px-3 py-2 rounded-lg hover:bg-slate-100 text-slate-700">5. Devoluciones</a>
+        <a href="#garantias"     class="block px-3 py-2 rounded-lg hover:bg-slate-100 text-slate-700">6. Garantías</a>
+        <a href="#servicios"     class="block px-3 py-2 rounded-lg hover:bg-slate-100 text-slate-700">7. Servicios</a>
+        <a href="#propiedad"     class="block px-3 py-2 rounded-lg hover:bg-slate-100 text-slate-700">8. Propiedad intelectual</a>
+        <a href="#responsabilidad" class="block px-3 py-2 rounded-lg hover:bg-slate-100 text-slate-700">9. Limitación de responsabilidad</a>
+        <a href="#ley"           class="block px-3 py-2 rounded-lg hover:bg-slate-100 text-slate-700">10. Ley aplicable</a>
+      </nav>
+      <div class="border-t border-slate-200 mt-4 pt-4 px-2">
+        <p class="text-xs text-slate-500 mb-2">Documento relacionado</p>
+        <a href="privacidad.html" class="text-xs font-bold text-primary hover:underline">Ver política de privacidad →</a>
+      </div>
+    </aside>
+
+    <div>
+      <div class="bg-accent rounded-2xl p-8 text-white mb-6">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="size-12 bg-primary rounded-lg flex items-center justify-center"><span class="material-symbols-outlined">description</span></div>
+          <h1 class="text-3xl font-black">Términos y Condiciones</h1>
+        </div>
+        <p class="text-slate-300">Última actualización: <strong>1 de septiembre de 2026</strong></p>
+        <p class="text-slate-400 text-sm mt-2">Versión 3.2</p>
+      </div>
+
+      <div class="bg-white rounded-xl border border-slate-200 p-6 sm:p-8 policy-content">
+        <h3 id="acepta">1. Aceptación de los términos</h3>
+        <p>Al acceder y utilizar el sitio web de AutoTotal y/o adquirir nuestros productos o servicios, aceptas cumplir y estar sujeto a los siguientes términos y condiciones.</p>
+
+        <h3 id="cuenta">2. Cuenta de usuario</h3>
+        <p>Para realizar compras o solicitar servicios, puedes crear una cuenta proporcionando información veraz y actualizada. Eres responsable de mantener la confidencialidad de tu contraseña y de toda actividad bajo tu cuenta.</p>
+
+        <h3 id="compras">3. Compras y pagos</h3>
+        <p>Los precios están expresados en pesos chilenos (CLP) e incluyen IVA. Medios de pago aceptados:</p>
+        <ul><li>Tarjetas de crédito y débito (Visa, Mastercard, Amex)</li><li>Webpay Plus (Transbank)</li><li>Transferencia bancaria</li><li>Efectivo en tienda</li></ul>
+        <p>Las transacciones con tarjeta se procesan bajo protocolo PCI-DSS. AutoTotal no almacena datos de tarjetas.</p>
+
+        <h3 id="envios">4. Envíos y entregas</h3>
+        <p>Realizamos envíos a todo Chile a través de Starken, Blue Express y Chilexpress. Los plazos son:</p>
+        <ul><li><strong>Región Metropolitana:</strong> 1-3 días hábiles</li><li><strong>Regiones:</strong> 3-7 días hábiles</li><li><strong>Zonas extremas:</strong> hasta 10 días hábiles</li></ul>
+        <p>Envío gratis sobre $80.000 en la RM.</p>
+
+        <h3 id="devoluciones">5. Política de devoluciones</h3>
+        <p>Aceptamos devoluciones dentro de los <strong>30 días</strong> siguientes a la compra, siempre que el producto esté sin uso, en su embalaje original y se presente boleta o factura.</p>
+
+        <h3 id="garantias">6. Garantías</h3>
+        <p>Todos nuestros productos cuentan con garantía legal del proveedor (mínimo 3 meses). La garantía cubre defectos de fabricación y no daños por mal uso.</p>
+
+        <h3 id="servicios">7. Servicios automotrices</h3>
+        <p>Los servicios se agendan previa confirmación. El cliente debe concurrir a la hora acordada y aprobar presupuestos adicionales antes de su ejecución. Los servicios incluyen garantía de 3 meses o 5.000 km.</p>
+
+        <h3 id="propiedad">8. Propiedad intelectual</h3>
+        <p>Todo el contenido del sitio es propiedad de AutoTotal o sus proveedores y está protegido por las leyes de propiedad intelectual.</p>
+
+        <h3 id="responsabilidad">9. Limitación de responsabilidad</h3>
+        <p>AutoTotal no será responsable por daños indirectos o incidentales, interrupciones del servicio por mantenimiento o fuerza mayor, o retrasos de terceros.</p>
+
+        <h3 id="ley">10. Ley aplicable y jurisdicción</h3>
+        <p>Estos términos se rigen por las leyes de Chile. Cualquier controversia será resuelta por los tribunales de Santiago.</p>
+      </div>
+
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a href="index.html" class="flex items-center gap-2 rounded-lg h-11 px-5 bg-slate-100 text-slate-700 text-sm font-bold hover:bg-slate-200">
+          <span class="material-symbols-outlined !text-base">arrow_back</span>Volver al inicio
+        </a>
+        <a href="privacidad.html" class="flex items-center gap-2 rounded-lg h-11 px-5 bg-primary text-white text-sm font-bold hover:bg-primary-dark">
+          Ver políticas de privacidad<span class="material-symbols-outlined !text-base">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="appFooter"></div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/main.js"></script>
+<script>renderHeader(); renderFooter();</script>
+</body>
+</html>
