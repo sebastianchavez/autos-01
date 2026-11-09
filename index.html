@@ -1,185 +1,138 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>AutoTotal — Inicio</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script>
-tailwind.config = {
-  darkMode: "class",
-  theme: {
-    extend: {
-      colors: { primary: "#dc2626", "primary-dark": "#991b1b", accent: "#171717", "background-light": "#f6f7f8", "background-dark": "#101922" },
-      fontFamily: { display: ["Inter", "sans-serif"] },
-      borderRadius: { DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px" }
-    }
-  }
-}
-</script>
-<link rel="stylesheet" href="assets/css/styles.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoShop | Venta de Autos Premium</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<meta name="currency" content="CLP">
+<style>
+/* Responsive layout: legacy page controls. */
+*, *::before, *::after { box-sizing: border-box; }
+main, section, form, .flex > *, .grid > * { min-width: 0; }
+img, iframe, input, select, textarea { max-width: 100%; }
+@media(max-width:767px) { table { display:block; max-width:100%; overflow-x:auto; } }
+</style>
 </head>
-<body class="font-display bg-background-light">
-<div id="appHeader" data-active="index"></div>
-
-<main>
-  <!-- Hero -->
-  <section class="relative px-4 sm:px-6 lg:px-8 pt-6">
-    <div class="relative overflow-hidden rounded-xl min-h-[420px] flex items-end bg-cover bg-center" style='background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.85)), url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1600&q=80");'>
-      <div class="relative z-10 p-8 sm:p-12 max-w-2xl">
-        <span class="inline-block px-3 py-1 bg-primary text-white text-xs font-bold rounded-full mb-4">¡NUEVO! · 15% OFF</span>
-        <h1 class="text-white text-4xl sm:text-5xl lg:text-6xl font-black leading-tight tracking-tight mb-4">
-          Todo para tu auto en un solo lugar
-        </h1>
-        <p class="text-slate-200 text-base sm:text-lg leading-relaxed mb-6">
-          Repuestos originales, accesorios, herramientas y servicios mecánicos profesionales. Más de 15 años cuidando tu vehículo.
-        </p>
-        <div class="flex flex-wrap gap-3">
-          <a href="productos.html" class="flex items-center justify-center rounded-lg h-12 px-6 bg-primary text-white text-sm font-bold hover:bg-primary-dark transition-colors">Ver productos</a>
-          <a href="contacto.html" class="flex items-center justify-center rounded-lg h-12 px-6 bg-white/10 backdrop-blur border border-white/30 text-white text-sm font-bold hover:bg-white/20 transition-colors">Agendar servicio</a>
+<body class="bg-gray-50 text-gray-900">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-blue-600 flex items-center gap-2">
+                <i class="fas fa-car"></i> AutoShop
+            </a>
+            <div class="hidden md:flex space-x-6 items-center">
+                <a href="index.html" class="nav-link text-blue-600">Inicio</a>
+                <a href="productos.html" class="nav-link">Catálogo</a>
+                <a href="nosotros.html" class="nav-link">Nosotros</a>
+                <a href="contacto.html" class="nav-link">Contacto</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="login.html" class="text-gray-600 hover:text-blue-600 transition-colors"><i class="fas fa-user"></i></a>
+                <a href="carrito.html" class="relative text-gray-600 hover:text-blue-600 transition-colors">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-1.5">0</span>
+                </a>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </nav>
 
-  <!-- Stats -->
-  <section class="px-4 sm:px-6 lg:px-8 mt-6">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-      <div class="bg-white rounded-xl p-5 text-center border border-slate-200">
-        <span class="material-symbols-outlined text-primary text-3xl mb-1">local_shipping</span>
-        <h3 class="text-2xl font-black">+15K</h3><p class="text-xs text-slate-500">Clientes felices</p>
-      </div>
-      <div class="bg-white rounded-xl p-5 text-center border border-slate-200">
-        <span class="material-symbols-outlined text-primary text-3xl mb-1">inventory_2</span>
-        <h3 class="text-2xl font-black">+5K</h3><p class="text-xs text-slate-500">Productos</p>
-      </div>
-      <div class="bg-white rounded-xl p-5 text-center border border-slate-200">
-        <span class="material-symbols-outlined text-primary text-3xl mb-1">build</span>
-        <h3 class="text-2xl font-black">+10K</h3><p class="text-xs text-slate-500">Servicios realizados</p>
-      </div>
-      <div class="bg-white rounded-xl p-5 text-center border border-slate-200">
-        <span class="material-symbols-outlined text-primary text-3xl mb-1">verified</span>
-        <h3 class="text-2xl font-black">15</h3><p class="text-xs text-slate-500">Años de experiencia</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Categorías -->
-  <section class="px-4 sm:px-6 lg:px-8 pt-12">
-    <div class="flex items-end justify-between mb-5">
-      <div>
-        <h2 class="text-2xl sm:text-3xl font-black tracking-tight">Categorías</h2>
-        <p class="text-slate-500 text-sm mt-1">Explora lo que tenemos para tu vehículo</p>
-      </div>
-      <a href="productos.html" class="text-primary text-sm font-bold hover:underline">Ver todas →</a>
-    </div>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="categoriesGrid"></div>
-  </section>
-
-  <!-- Productos destacados -->
-  <section class="px-4 sm:px-6 lg:px-8 pt-12">
-    <div class="flex items-end justify-between mb-5">
-      <div>
-        <h2 class="text-2xl sm:text-3xl font-black tracking-tight">Productos destacados</h2>
-        <p class="text-slate-500 text-sm mt-1">Los más vendidos de esta semana</p>
-      </div>
-      <a href="productos.html" class="text-primary text-sm font-bold hover:underline">Ver catálogo →</a>
-    </div>
-    <div id="featuredProducts" class="grid grid-cols-2 lg:grid-cols-4 gap-4"></div>
-  </section>
-
-  <!-- Banner Servicios -->
-  <section class="px-4 sm:px-6 lg:px-8 pt-12">
-    <div class="bg-accent rounded-2xl overflow-hidden">
-      <div class="grid md:grid-cols-2 gap-6">
-        <div class="p-8 sm:p-12 flex flex-col justify-center text-white">
-          <span class="inline-block px-3 py-1 bg-primary text-white text-xs font-bold rounded-full mb-4 w-fit">SERVICIOS PROFESIONALES</span>
-          <h2 class="text-3xl sm:text-4xl font-black leading-tight mb-4">Tu auto en las mejores manos</h2>
-          <p class="text-slate-300 mb-6">Contamos con mecánicos certificados, equipamiento de última generación y todas las especialidades para mantener tu vehículo en óptimas condiciones.</p>
-          <div class="grid grid-cols-2 gap-4 mb-6 max-w-md">
-            <div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary">check_circle</span><span class="text-sm">Cambio de aceite</span></div>
-            <div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary">check_circle</span><span class="text-sm">Alineación</span></div>
-            <div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary">check_circle</span><span class="text-sm">Diagnóstico</span></div>
-            <div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary">check_circle</span><span class="text-sm">Frenos</span></div>
-          </div>
-          <a href="contacto.html" class="flex w-fit items-center justify-center rounded-lg h-12 px-6 bg-primary text-white text-sm font-bold hover:bg-primary-dark">Agendar hora</a>
+    <!-- Hero Section -->
+    <header class="relative h-[600px] flex items-center justify-center text-white overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&q=80&w=1920" class="absolute inset-0 w-full h-full object-cover brightness-50" alt="Hero Car">
+        <div class="relative z-10 text-center px-4 max-w-3xl">
+            <h1 class="text-5xl md:text-6xl font-extrabold mb-6">Encuentra el Auto de tus Sueños</h1>
+            <p class="text-xl mb-8 text-gray-200">La mayor selección de vehículos premium con garantía certificada y financiamiento inmediato.</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="productos.html" class="btn-primary bg-blue-600 px-8 py-3 text-lg">Ver Catálogo</a>
+                <a href="contacto.html" class="btn-secondary bg-white text-gray-900 px-8 py-3 text-lg">Contáctanos</a>
+            </div>
         </div>
-        <div class="relative min-h-[280px] bg-cover bg-center" style='background-image: url("https://images.unsplash.com/photo-1632823469850-1f7e28e0a6f4?w=900&q=80");'></div>
-      </div>
-    </div>
-  </section>
+    </header>
 
-  <!-- Marcas -->
-  <section class="px-4 sm:px-6 lg:px-8 pt-12">
-    <h2 class="text-center text-2xl font-black tracking-tight mb-2">Trabajamos con las mejores marcas</h2>
-    <p class="text-center text-slate-500 text-sm mb-6">Repuestos originales y de calidad certificada</p>
-    <div class="grid grid-cols-3 md:grid-cols-6 gap-4">
-      ${["Bosch","Castrol","NGK","Brembo","Mobil","ACDelco"].map(b => `<div class="bg-white rounded-lg p-4 flex items-center justify-center h-20 border border-slate-200"><span class="font-black text-lg">${b}</span></div>`).join("")}
-    </div>
-  </section>
-
-  <!-- Testimonios -->
-  <section class="px-4 sm:px-6 lg:px-8 pt-12 pb-12">
-    <h2 class="text-2xl sm:text-3xl font-black tracking-tight mb-6 text-center">Lo que dicen nuestros clientes</h2>
-    <div class="grid md:grid-cols-3 gap-4">
-      <div class="bg-white rounded-xl p-6 border border-slate-200">
-        <div class="flex text-yellow-400 mb-3">${starsHTML(5)}</div>
-        <p class="text-slate-700 text-sm mb-4">"Excelente atención y los repuestos originales. Mi Toyota quedó como nuevo. Muy profesionales, recomiendo 100%."</p>
-        <div class="flex items-center gap-3">
-          <div class="size-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-black">CM</div>
-          <div><p class="font-bold text-sm">Carlos Muñoz</p><p class="text-xs text-slate-500">Hace 2 semanas</p></div>
+    <!-- Featured Categories -->
+    <section class="py-16 container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12">Categorías Destacadas</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="group relative h-64 rounded-2xl overflow-hidden cursor-pointer shadow-lg">
+                <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Deportivos">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6">
+                    <h3 class="text-2xl font-bold text-white">Deportivos</h3>
+                </div>
+            </div>
+            <div class="group relative h-64 rounded-2xl overflow-hidden cursor-pointer shadow-lg">
+                <img src="https://images.unsplash.com/photo-1533473359331-0135ef177452?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="SUV">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6">
+                    <h3 class="text-2xl font-bold text-white">SUVs y Familiares</h3>
+                </div>
+            </div>
+            <div class="group relative h-64 rounded-2xl overflow-hidden cursor-pointer shadow-lg">
+                <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Lujo">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6">
+                    <h3 class="text-2xl font-bold text-white">Lujo & Ejecutivos</h3>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="bg-white rounded-xl p-6 border border-slate-200">
-        <div class="flex text-yellow-400 mb-3">${starsHTML(5)}</div>
-        <p class="text-slate-700 text-sm mb-4">"Llevo 3 años confiando el mantenimiento de mi auto. Precios justos y siempre cumplen con los plazos."</p>
-        <div class="flex items-center gap-3">
-          <div class="size-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-black">MV</div>
-          <div><p class="font-bold text-sm">María Vargas</p><p class="text-xs text-slate-500">Hace 1 mes</p></div>
+    </section>
+
+    <!-- Trending Products -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <h2 class="text-3xl font-bold">Modelos Tendencia</h2>
+                    <p class="text-gray-600">Los más buscados de esta semana</p>
+                </div>
+                <a href="productos.html" class="text-blue-600 font-medium hover:underline">Ver todos <i class="fas fa-arrow-right ml-1"></i></a>
+            </div>
+            <div id="trending-products" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Rendered by JS -->
+            </div>
         </div>
-      </div>
-      <div class="bg-white rounded-xl p-6 border border-slate-200">
-        <div class="flex text-yellow-400 mb-3"><span class="material-symbols-outlined text-base fill-1">star</span><span class="material-symbols-outlined text-base fill-1">star</span><span class="material-symbols-outlined text-base fill-1">star</span><span class="material-symbols-outlined text-base fill-1">star</span><span class="material-symbols-outlined text-base text-slate-300">star</span></div>
-        <p class="text-slate-700 text-sm mb-4">"Compré accesorios para mi camioneta y todo perfecto. El envío fue rápido y el producto venía bien embalado."</p>
-        <div class="flex items-center gap-3">
-          <div class="size-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-black">JR</div>
-          <div><p class="font-bold text-sm">Jorge Rojas</p><p class="text-xs text-slate-500">Hace 3 semanas</p></div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-12">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <a href="index.html" class="text-2xl font-bold text-white flex items-center gap-2 mb-4">
+                    <i class="fas fa-car"></i> AutoShop
+                </a>
+                <p class="text-sm leading-relaxed">Tu socio confiable en la compra y venta de vehículos premium. Calidad, seguridad y transparencia en cada trato.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Enlaces Rápidos</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="productos.html" class="hover:text-white transition-colors">Catálogo de Autos</a></li>
+                    <li><a href="nosotros.html" class="hover:text-white transition-colors">Sobre Nosotros</a></li>
+                    <li><a href="contacto.html" class="hover:text-white transition-colors">Contacto</a></li>
+                    <li><a href="resena.html" class="hover:text-white transition-colors">Testimonios</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Soporte</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="terminos.html" class="hover:text-white transition-colors">Términos y Condiciones</a></li>
+                    <li><a href="privacidad.html" class="hover:text-white transition-colors">Política de Privacidad</a></li>
+                    <li><a href="contacto.html" class="hover:text-white transition-colors">Centro de Ayuda</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Newsletter</h4>
+                <p class="text-sm mb-4">Recibe ofertas exclusivas en tu correo.</p>
+                <form class="flex gap-2">
+                    <input type="email" placeholder="Tu email" class="bg-gray-800 border-none rounded-lg px-3 py-2 text-sm w-full outline-none focus:ring-1 focus:ring-blue-500">
+                    <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"><i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
-</main>
+        <div class="container mx-auto px-4 mt-12 pt-8 border-t border-gray-800 text-center text-xs">
+            <p>&copy; 2026 AutoShop. Todos los derechos reservados.</p>
+        </div>
+    </footer>
 
-<div id="appFooter"></div>
-
-<!-- Scripts compartidos -->
-<script src="assets/js/data.js"></script>
-<script src="assets/js/main.js"></script>
-<script>
-renderHeader("index");
-renderFooter();
-
-// Renderizar categorías
-const catImages = {
-  repuestos:    "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=600&q=80",
-  accesorios:   "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?w=600&q=80",
-  herramientas: "https://images.unsplash.com/photo-1530124566582-a618bc2615dc?w=600&q=80",
-  servicios:    "https://images.unsplash.com/photo-1625047509248-ec889cbff17f?w=600&q=80"
-};
-document.getElementById("categoriesGrid").innerHTML = CATEGORIES.map(c => `
-  <a href="productos.html?cat=${c.key}" class="group relative overflow-hidden rounded-xl bg-cover bg-center h-44" style='background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url("${catImages[c.key]}");'>
-    <div class="absolute inset-0 flex flex-col justify-end p-4">
-      <h3 class="text-white text-lg font-black">${c.label}</h3>
-    </div>
-  </a>
-`).join("");
-
-// Renderizar productos destacados
-document.getElementById("featuredProducts").innerHTML =
-  PRODUCTS.filter(p => p.featured).slice(0, 4).map(productCardHTML).join("");
-</script>
+    <script src="js/main.js"></script>
 </body>
 </html>
